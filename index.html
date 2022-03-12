@@ -18,7 +18,7 @@
         let scene, camera, renderer, controls
 
         import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.126.0/build/three.module.js"
-        import {TrackballControls} from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/TrackballControls.js"
+        import {OrbitControls} from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/controls/OrbitControls.js"
         import {PLYLoader} from "https://cdn.jsdelivr.net/npm/three@0.126.0/examples/jsm/loaders/PLYLoader.js"
         scene = new THREE.Scene()
         camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1,1000)
@@ -34,16 +34,12 @@
             scene.add( mesh );
         } );
 
-        controls = new TrackballControls(camera, renderer.domElement)
-        controls.rotateSpeed = 1.0;
-		controls.zoomSpeed = 1.2;
-		controls.panSpeed = 0.5;
+        controls = new OrbitControls(camera, renderer.domElement)
 
         animate()
 
         function animate () {
             requestAnimationFrame(animate)
-            controls.update()
             renderer.render(scene, camera)
         }
 
